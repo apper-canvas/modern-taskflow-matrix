@@ -1,4 +1,5 @@
-import ApperIcon from './ApperIcon';
+import React from 'react';
+import ApperIcon from '@/components/ApperIcon';
 
 const PriorityBadge = ({ priority, showLabel = true }) => {
   const config = {

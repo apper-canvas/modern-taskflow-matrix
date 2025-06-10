@@ -1,5 +1,7 @@
+import React from 'react';
 import { motion } from 'framer-motion';
-import ApperIcon from './ApperIcon';
+import ApperIcon from '@/components/ApperIcon';
+import Button from '@/components/atoms/Button';
 
 const EmptyState = ({ view, hasSearch, hasCategory, onAddTask, onClearFilters }) => {
   const getEmptyStateContent = () => {
@@ -77,14 +79,17 @@ const EmptyState = ({ view, hasSearch, hasCategory, onAddTask, onClearFilters })
       </p>
       
       {onAction && (
-        <motion.button
+        <motion.div
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          onClick={onAction}
-          className="px-6 py-3 bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-medium shadow-lg hover:shadow-xl transition-shadow duration-200"
         >
-          {actionLabel}
-        </motion.button>
+          <Button
+            onClick={onAction}
+            className="px-6 py-3 bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-medium shadow-lg hover:shadow-xl"
+          >
+            {actionLabel}
+          </Button>
+        </motion.div>
       )}
     </motion.div>
   );

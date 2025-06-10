@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { format, isToday, isPast, isTomorrow } from 'date-fns';
-import ApperIcon from './ApperIcon';
-import PriorityBadge from './PriorityBadge';
+import ApperIcon from '@/components/ApperIcon';
+import PriorityBadge from '@/components/molecules/PriorityBadge';
+import Button from '@/components/atoms/Button';
+import Input from '@/components/atoms/Input';
 
 const TaskCard = ({ task, category, onComplete, onDelete, onUpdate, index }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -69,21 +71,23 @@ const TaskCard = ({ task, category, onComplete, onDelete, onUpdate, index }) => 
           : category?.color === 'green' ? 'border-l-success'
           : category?.color === 'yellow' ? 'border-l-warning'
           : 'border-l-primary'
-      } max-w-full overflow-hidden`}
+      } max-w-full overflow-hidden group`}
     >
       <div className="flex items-start space-x-4 max-w-full">
         {/* Checkbox */}
-        <motion.button
+        <motion.div
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          onClick={() => onComplete(task.id)}
           className="flex-shrink-0 mt-1"
         >
-          <div className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-all duration-200 ${
-            task.completed 
-              ? 'bg-success border-success' 
-              : 'border-gray-300 hover:border-primary'
-          }`}>
+          <Button
+            onClick={() => onComplete(task.id)}
+            className={`w-5 h-5 rounded border-2 flex items-center justify-center ${
+              task.completed 
+                ? 'bg-success border-success' 
+                : 'border-gray-300 hover:border-primary'
+            }`}
+          >
             <AnimatePresence>
               {task.completed && (
                 <motion.div
@@ -96,37 +100,38 @@ const TaskCard = ({ task, category, onComplete, onDelete, onUpdate, index }) => 
                 </motion.div>
               )}
             </AnimatePresence>
-          </div>
-        </motion.button>
+          </Button>
+        </motion.div>
 
         {/* Content */}
         <div className="flex-1 min-w-0">
           {isEditing ? (
             <div className="space-y-2">
-              <input
+              <Input
                 type="text"
                 value={editData.title}
                 onChange={(e) => setEditData({ ...editData, title: e.target.value })}
                 onKeyDown={handleKeyPress}
-                className="w-full text-lg font-medium bg-transparent border-b-2 border-primary focus:outline-none"
+                className="text-lg font-medium bg-transparent border-b-2 border-primary focus:outline-none"
                 autoFocus
               />
-              <textarea
+              <Input
+                type="textarea"
                 value={editData.description}
                 onChange={(e) => setEditData({ ...editData, description: e.target.value })}
                 onKeyDown={handleKeyPress}
                 placeholder="Add description..."
-                className="w-full text-gray-600 bg-transparent border-b border-gray-200 focus:outline-none focus:border-primary resize-none"
+                className="text-gray-600 bg-transparent border-b border-gray-200 focus:outline-none focus:border-primary resize-none"
                 rows="2"
               />
               <div className="flex space-x-2 pt-2">
-                <button
+                <Button
                   onClick={handleSaveEdit}
                   className="px-3 py-1 bg-primary text-white text-sm rounded-lg hover:bg-primary/90"
                 >
                   Save
-                </button>
-                <button
+                </Button>
+                <Button
                   onClick={() => {
                     setIsEditing(false);
                     setEditData({ title: task.title, description: task.description || '' });
@@ -134,7 +139,7 @@ const TaskCard = ({ task, category, onComplete, onDelete, onUpdate, index }) => 
                   className="px-3 py-1 bg-gray-200 text-gray-700 text-sm rounded-lg hover:bg-gray-300"
                 >
                   Cancel
-                </button>
+                </Button>
               </div>
             </div>
           ) : (
@@ -180,25 +185,27 @@ const TaskCard = ({ task, category, onComplete, onDelete, onUpdate, index }) => 
             </div>
 
             {/* Actions */}
-            <div className="flex items-center space-x-2 opacity-0 group-hover:opacity-100 transition-opacity">
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                onClick={() => setIsEditing(true)}
-                className="p-1 text-gray-400 hover:text-primary transition-colors"
-              >
-                <ApperIcon name="Edit2" size={16} />
-              </motion.button>
-              
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                onClick={() => onDelete(task.id)}
-                className="p-1 text-gray-400 hover:text-error transition-colors"
-              >
-                <ApperIcon name="Trash2" size={16} />
-              </motion.button>
-            </div>
+            {!isEditing && (
+                <div className="flex items-center space-x-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                        <Button
+                            onClick={() => setIsEditing(true)}
+                            className="p-1 text-gray-400 hover:text-primary"
+                        >
+                            <ApperIcon name="Edit2" size={16} />
+                        </Button>
+                    </motion.div>
+                    
+                    <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                        <Button
+                            onClick={() => onDelete(task.id)}
+                            className="p-1 text-gray-400 hover:text-error"
+                        >
+                            <ApperIcon name="Trash2" size={16} />
+                        </Button>
+                    </motion.div>
+                </div>
+            )}
           </div>
         </div>
       </div>

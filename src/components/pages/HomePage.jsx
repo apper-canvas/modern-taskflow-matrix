@@ -1,17 +1,18 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { toast } from 'react-toastify';
 import { format, isToday, isTomorrow, isPast, isThisWeek } from 'date-fns';
-import TaskCard from '../components/TaskCard';
-import CategorySidebar from '../components/CategorySidebar';
-import AddTaskModal from '../components/AddTaskModal';
-import ViewSwitcher from '../components/ViewSwitcher';
-import EmptyState from '../components/EmptyState';
-import ApperIcon from '../components/ApperIcon';
-import { taskService, categoryService } from '../services';
+import TaskCard from '@/components/organisms/TaskCard';
+import CategorySidebar from '@/components/organisms/CategorySidebar';
+import AddTaskModal from '@/components/organisms/AddTaskModal';
+import ViewSwitcher from '@/components/molecules/ViewSwitcher';
+import EmptyState from '@/components/organisms/EmptyState';
+import ApperIcon from '@/components/ApperIcon';
+import Button from '@/components/atoms/Button';
+import { taskService, categoryService } from '@/services';
 
-const Home = () => {
+const HomePage = () => {
   const { searchQuery } = useOutletContext();
   const [tasks, setTasks] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -176,12 +177,12 @@ const Home = () => {
           <ApperIcon name="AlertCircle" size={48} className="text-error mx-auto mb-4" />
           <h3 className="text-lg font-medium text-gray-900 mb-2">Something went wrong</h3>
           <p className="text-gray-500 mb-4">{error}</p>
-          <button
+          <Button
             onClick={() => window.location.reload()}
             className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
           >
             Try Again
-          </button>
+          </Button>
         </div>
       </div>
     );
@@ -242,14 +243,18 @@ const Home = () => {
       </div>
 
       {/* Floating Add Button */}
-      <motion.button
+      <motion.div
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        onClick={() => setIsAddModalOpen(true)}
         className="fixed bottom-6 right-6 w-14 h-14 bg-gradient-to-r from-primary to-secondary text-white rounded-full shadow-lg hover:shadow-xl transition-shadow duration-200 flex items-center justify-center z-30"
       >
-        <ApperIcon name="Plus" size={24} />
-      </motion.button>
+        <Button
+          onClick={() => setIsAddModalOpen(true)}
+          className="w-full h-full rounded-full"
+        >
+          <ApperIcon name="Plus" size={24} />
+        </Button>
+      </motion.div>
 
       {/* Add Task Modal */}
       <AddTaskModal
@@ -262,4 +267,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;

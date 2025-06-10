@@ -1,4 +1,4 @@
-import Home from '../pages/Home';
+import HomePage from '@/components/pages/HomePage';
 
 export const routes = [
   {
@@ -6,7 +6,7 @@ export const routes = [
     label: 'Today',
     path: '/today',
     icon: 'Calendar',
-    component: Home
+component: HomePage
   }
 ];
 
