@@ -1,0 +1,74 @@
+[
+  {
+    "id": "1",
+    "title": "Review quarterly financial reports",
+    "description": "Analyze Q3 revenue, expenses, and profit margins. Prepare summary for board meeting.",
+    "categoryId": "1",
+    "priority": "high",
+    "dueDate": "2024-01-15T17:00:00.000Z",
+    "completed": false,
+    "completedAt": null,
+    "createdAt": "2024-01-10T09:00:00.000Z",
+    "order": 0
+  },
+  {
+    "id": "2",
+    "title": "Complete React component refactoring",
+    "description": "Migrate legacy class components to functional components with hooks. Update testing suite accordingly.",
+    "categoryId": "2",
+    "priority": "medium",
+    "dueDate": "2024-01-16T12:00:00.000Z",
+    "completed": false,
+    "completedAt": null,
+    "createdAt": "2024-01-12T14:30:00.000Z",
+    "order": 1
+  },
+  {
+    "id": "3",
+    "title": "Grocery shopping for dinner party",
+    "description": "Buy ingredients for Italian themed dinner: pasta, fresh herbs, wine, and dessert items.",
+    "categoryId": "3",
+    "priority": "medium",
+    "dueDate": "2024-01-14T16:00:00.000Z",
+    "completed": true,
+    "completedAt": "2024-01-14T15:45:00.000Z",
+    "createdAt": "2024-01-13T11:20:00.000Z",
+    "order": 2
+  },
+  {
+    "id": "4",
+    "title": "Schedule dentist appointment",
+    "description": "Book routine cleaning and checkup. Prefer morning appointment if available.",
+    "categoryId": "4",
+    "priority": "low",
+    "dueDate": "2024-01-20T10:00:00.000Z",
+    "completed": false,
+    "completedAt": null,
+    "createdAt": "2024-01-11T16:45:00.000Z",
+    "order": 3
+  },
+  {
+    "id": "5",
+    "title": "Prepare presentation for client meeting",
+    "description": "Create slides covering project timeline, deliverables, and budget breakdown for new campaign.",
+    "categoryId": "1",
+    "priority": "urgent",
+    "dueDate": "2024-01-15T09:00:00.000Z",
+    "completed": false,
+    "completedAt": null,
+    "createdAt": "2024-01-14T08:15:00.000Z",
+    "order": 4
+  },
+  {
+    "id": "6",
+    "title": "Update portfolio website",
+    "description": "Add recent projects, refresh design, and optimize for mobile responsiveness.",
+    "categoryId": "2",
+    "priority": "low",
+    "dueDate": "2024-01-25T23:59:00.000Z",
+    "completed": false,
+    "completedAt": null,
+    "createdAt": "2024-01-08T13:00:00.000Z",
+    "order": 5
+  }
+]
