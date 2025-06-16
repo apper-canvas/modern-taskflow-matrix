@@ -16,13 +16,12 @@ const Layout = () => {
               whileHover={{ scale: 1.05 }}
               className="flex items-center space-x-2"
             >
-              <div className="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
+<div className="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center">
                 <ApperIcon name="CheckSquare" size={18} className="text-white" />
               </div>
-              <h1 className="text-xl font-heading font-bold text-gray-900">TaskFlow</h1>
+              <h1 className="text-xl font-heading font-bold text-gray-900">Tasker Pro</h1>
             </motion.div>
           </div>
-
           {/* Search Bar */}
           <div className="flex-1 max-w-md mx-8">
             <div className="relative">
