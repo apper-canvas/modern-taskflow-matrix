@@ -51,13 +51,13 @@ const HomePage = () => {
       return false;
     }
 
-    // Category filter
+// Category filter
     if (selectedCategory && task.categoryId !== selectedCategory) {
       return false;
     }
 
     // View filter
-    if (currentView === 'today') {
+if (currentView === 'today') {
       return isToday(new Date(task.dueDate)) || (isPast(new Date(task.dueDate)) && !task.completed);
     } else if (currentView === 'upcoming') {
       const taskDate = new Date(task.dueDate);
